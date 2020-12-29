@@ -154,7 +154,6 @@ class _SignInPageState extends State<SignInPage> {
                       color: Colors.deepPurple,
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          // if (await signIn(email, password))
                           Navigator.pushReplacementNamed(context, '/home');
                         }
                       },
