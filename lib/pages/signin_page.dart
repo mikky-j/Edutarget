@@ -158,8 +158,12 @@ class _SignInPageState extends State<SignInPage> {
                       color: Colors.deepPurple,
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          // if (await signIn(email, password))
-                          Navigator.pushReplacementNamed(context, '/home');
+                          bool value = await signIn(email, password);
+                          if (value)
+                            // if (await signIn(email, password))
+                            Navigator.pushReplacementNamed(context, '/home');
+                          else
+                            print("something went wrong");
                         }
                       },
                       child: Text(
