@@ -1,10 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:new_edutarget/constants/const.dart';
 import 'package:new_edutarget/models/shared_prefrences_helper.dart';
 import 'package:new_edutarget/models/theme_notifier.dart';
-import 'package:new_edutarget/models/user.dart' as localUser;
+import 'package:new_edutarget/models/user.dart';
 import 'package:new_edutarget/pages/complete_account_page.dart';
 import 'package:new_edutarget/pages/upgrade_page.dart';
 import 'package:new_edutarget/widgets/change_password_page.dart';
@@ -162,7 +161,7 @@ class SignOutDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<localUser.User>(
+    return Consumer<User>(
       builder: (context, user, child) => AlertDialog(
         title: Text("Sign Out"),
         content: Text("Are you sure you want to sign out"),
@@ -181,7 +180,6 @@ class SignOutDialog extends StatelessWidget {
                 theme.colorIndex = "purple";
                 await SharedPreferencesHelper()
                     .saveString("color-value", "purple");
-                await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacementNamed(context, '/signin');
               },
               child: Text("Yes"),

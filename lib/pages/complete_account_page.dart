@@ -277,7 +277,7 @@ class _CompleteAccountPageState extends State<CompleteAccountPage> {
                         if (widget.edit) {
                           Navigator.pop(context);
                         } else {
-                          Navigator.push(context,
+                          Navigator.pushReplacement(context,
                               customTransition(CongratsCompletePage()));
                         }
                       }
@@ -299,7 +299,7 @@ class _CompleteAccountPageState extends State<CompleteAccountPage> {
             (!widget.edit)
                 ? TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushReplacementNamed(context, '/home');
                     },
                     child: Text("Skip, I'll do this later"),
                   )
@@ -340,7 +340,7 @@ class CongratsCompletePage extends StatelessWidget {
               width: 300,
               child: RaisedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.pushReplacementNamed(context, '/home');
                 },
                 color: Theme.of(context).accentColor,
                 child: Text(

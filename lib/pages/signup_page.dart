@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:new_edutarget/constants/const.dart';
-import 'package:new_edutarget/models/auth_service.dart';
 import 'package:new_edutarget/models/user.dart';
 import 'package:new_edutarget/widgets/double_tap_to_exit.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
     Size size = MediaQuery.of(context).size;
     TextTheme text = Theme.of(context).textTheme;
     _tapGestureRecognizer
-      ..onTap = () => Navigator.pushNamed(context, '/signin');
+      ..onTap = () => Navigator.pushReplacementNamed(context, '/signin');
     return DoubleTapToExit(
       child: Scaffold(
         body: SafeArea(
@@ -205,18 +204,11 @@ class _SignUpFormState extends State<SignUpForm> {
                 height: 50,
                 child: RaisedButton(
                   color: Colors.deepPurple,
-                  onPressed: () async {
+                  onPressed: () {
                     FocusScope.of(context).unfocus();
                     if (formKey.currentState.validate()) {
-                      bool value = await register(
-                        user.email,
-                        user.password,
-                        user.username,
-                      );
-                      if (value) {
-                        Navigator.pushReplacementNamed(
-                            context, '/complete-account');
-                      }
+                      Navigator.pushReplacementNamed(
+                          context, '/complete-account');
                     }
                   },
                   child: Text(

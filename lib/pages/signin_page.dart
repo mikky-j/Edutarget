@@ -31,8 +31,6 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    String email;
-    String password;
     Size size = MediaQuery.of(context).size;
     TextTheme text = Theme.of(context).textTheme;
     _tapGestureRecognizer
@@ -89,7 +87,6 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                               validator: (value) {
                                 if (value.isNotEmpty) {
-                                  email = value;
                                   return null;
                                 }
                                 return "User does not exist";
@@ -106,7 +103,6 @@ class _SignInPageState extends State<SignInPage> {
                               obscureText: obscured,
                               validator: (value) {
                                 if (value.isNotEmpty) {
-                                  password = value;
                                   return null;
                                 }
                                 return;

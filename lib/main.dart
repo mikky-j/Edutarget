@@ -15,12 +15,9 @@ import 'package:new_edutarget/pages/signin_page.dart';
 import 'package:new_edutarget/pages/welcome_page.dart';
 import 'package:new_edutarget/widgets/splashscreen.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'constants/const.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -137,7 +134,6 @@ class MainApp extends StatelessWidget {
       onTap: () => WidgetsBinding.instance.focusManager.primaryFocus?.unfocus(),
       child: Consumer<ThemeNotifier>(
         builder: (context, themeNotifier, child) {
-          print(themeNotifier.colorIndex);
           ThemeData lightTheme = ThemeData.light().copyWith(
             appBarTheme: ThemeData.light().appBarTheme.copyWith(
                 color: ThemeData.light().scaffoldBackgroundColor,

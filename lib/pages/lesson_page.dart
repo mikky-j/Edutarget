@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter/material.dart';
 import 'package:new_edutarget/constants/const.dart';
 import 'package:new_edutarget/models/lesson.dart';
