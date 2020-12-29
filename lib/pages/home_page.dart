@@ -51,7 +51,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               icon: Icon(Icons.video_collection),
             ),
             Tab(
-              icon: Icon(Icons.play_circle_fill),
+              icon: Icon(Icons.forum_rounded),
             ),
             Tab(
               icon: Icon(Icons.account_circle),
