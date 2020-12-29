@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -27,10 +29,9 @@ class DiscoverPage extends StatelessWidget {
             CustomAppBar(controller: controller),
             WelcomeMessage(),
             HomeSearchBar(),
+            TagBar(),
             HomeGridView()
-          ]..add(SizedBox(
-              height: 100.0,
-            )),
+          ],
         ),
       ),
     );
@@ -80,6 +81,55 @@ class HomeGridView extends StatelessWidget {
   }
 }
 
+class TagBar extends StatefulWidget {
+  const TagBar({Key key}) : super(key: key);
+
+  @override
+  _TagBarState createState() => _TagBarState();
+}
+
+class _TagBarState extends State<TagBar> with SingleTickerProviderStateMixin {
+  TabController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TabBar(
+      controller: _controller,
+      indicator: BoxDecoration(
+        color: Colors.black54,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      indicatorWeight: 0.001,
+      isScrollable: true,
+      // unselectedLabelColor: Colors.blueGrey,
+      labelColor: Colors.white,
+      tabs: [
+        Tab(
+          // child: Text("hello"),
+          text: "Popular",
+        ),
+        Tab(
+          // child: Text("hello"),
+          text: "Programming",
+        ),
+        Tab(
+          // child: Text("hello"),
+          text: "Flutter",
+        ),
+        Tab(
+          // child: Text("hello"),
+          text: "C-Objective",
+        ),
+      ],
+    );
+  }
+}
+
 class CourseCard extends StatelessWidget {
   final Course course;
   const CourseCard({
@@ -115,9 +165,10 @@ class CourseCard extends StatelessWidget {
           ),
           Container(
             height: 250,
-            width: 175,
+            width: (MediaQuery.of(context).size.width * 0.5) - 40,
             margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             padding: EdgeInsets.all(20.0),
+            alignment: Alignment.center,
             child: Column(
               children: [
                 Text(
