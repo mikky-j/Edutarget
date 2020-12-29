@@ -158,6 +158,7 @@ class _SignInPageState extends State<SignInPage> {
                       color: Colors.deepPurple,
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
+                          print('$email and $password');
                           bool value = await signIn(email, password);
                           if (value)
                             // if (await signIn(email, password))
