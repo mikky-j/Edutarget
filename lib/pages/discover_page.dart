@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_edutarget/constants/const.dart';
@@ -244,9 +243,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<localUser.User>(
       builder: (context, user, child) {
-        String username = user.username.toString().isEmpty
-            ? FirebaseAuth.instance.currentUser?.displayName
-            : user.username;
+        String username = user.username;
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0),
           child: Row(
