@@ -16,7 +16,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   TabController _tabcontroller;
   @override
   void initState() {
-    _tabcontroller = new TabController(length: 3, vsync: this);
+    _tabcontroller = new TabController(length: 4, vsync: this);
     super.initState();
   }
 
@@ -37,6 +37,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               Container(
                 color: Colors.blue,
               ),
+              Container(
+                color: Colors.red,
+              ),
               AccountPage(),
             ],
             controller: _tabcontroller,
@@ -52,6 +55,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
             Tab(
               icon: Icon(Icons.play_circle_fill),
+            ),
+            Tab(
+              icon: Icon(Icons.forum_rounded),
             ),
             Tab(
               icon: Icon(Icons.account_circle),
