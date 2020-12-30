@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_edutarget/pages/account_page.dart';
 import 'package:new_edutarget/pages/discover_page.dart';
+import 'package:new_edutarget/pages/forum_page.dart';
 import 'package:new_edutarget/widgets/double_tap_to_exit.dart';
 
 class Home extends StatefulWidget {
@@ -37,9 +38,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               Container(
                 color: Colors.blue,
               ),
-              Container(
-                color: Colors.red,
-              ),
+              ForumPage(),
               AccountPage(),
             ],
             controller: _tabcontroller,
