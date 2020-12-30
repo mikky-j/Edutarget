@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:auto_size_text/auto_size_text.dart';
@@ -21,18 +20,27 @@ class DiscoverPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomAppBar(controller: controller),
-            WelcomeMessage(),
-            HomeSearchBar(),
-            TagBar(),
-            HomeGridView()
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: CustomAppBar(controller: controller),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: WelcomeMessage(),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: HomeSearchBar(),
+          ),
+          TagBar(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: HomeGridView(),
+          )
+        ],
       ),
     );
   }
@@ -46,6 +54,7 @@ class HomeGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
+      spacing: 20.0,
       alignment: WrapAlignment.center,
       children: [
         CourseCard(
@@ -76,6 +85,13 @@ class HomeGridView extends StatelessWidget {
               authorName: "Damilola Oregunwa",
               color: "pink"),
         ),
+        CourseCard(
+          course: Course(
+              name: "Fundamentals of something",
+              imageName: "assets/svg/Knowledge.svg",
+              authorName: "Damilola Oregunwa",
+              color: "amber"),
+        ),
       ],
     );
   }
@@ -93,21 +109,22 @@ class _TagBarState extends State<TagBar> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = TabController(length: 4, vsync: this);
+    _controller = TabController(length: 5, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
     return TabBar(
       controller: _controller,
-      indicator: BoxDecoration(
-        color: Colors.black54,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      indicatorWeight: 0.001,
+      // indicator: BoxDecoration(
+      //   color: Colors.black54,
+      //   borderRadius: BorderRadius.circular(20),
+      // ),
+      // indicatorWeight: 0.001,
       isScrollable: true,
-      // unselectedLabelColor: Colors.blueGrey,
-      labelColor: Colors.white,
+      indicatorColor: Theme.of(context).primaryColor,
+      // // unselectedLabelColor: Colors.blueGrey,
+      // labelColor: Colors.white,
       tabs: [
         Tab(
           // child: Text("hello"),
@@ -125,6 +142,10 @@ class _TagBarState extends State<TagBar> with SingleTickerProviderStateMixin {
           // child: Text("hello"),
           text: "C-Objective",
         ),
+        Tab(
+          // child: Text("hello"),
+          text: "JavaScript",
+        ),
       ],
     );
   }
@@ -139,6 +160,7 @@ class CourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final courseWidth = (MediaQuery.of(context).size.width * 0.5) - 40;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -154,7 +176,7 @@ class CourseCard extends StatelessWidget {
             tag: course.name,
             child: Container(
               height: 250,
-              width: (MediaQuery.of(context).size.width * 0.5) - 40,
+              width: courseWidth,
               decoration: BoxDecoration(
                 color: colors[course.color],
                 borderRadius: BorderRadius.circular(30.0),
@@ -165,7 +187,7 @@ class CourseCard extends StatelessWidget {
           ),
           Container(
             height: 250,
-            width: (MediaQuery.of(context).size.width * 0.5) - 40,
+            width: courseWidth,
             margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             padding: EdgeInsets.all(20.0),
             alignment: Alignment.center,
@@ -307,7 +329,7 @@ class CustomAppBar extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  controller.index = 2;
+                  controller.index = 3;
                 },
                 child: CircleAvatar(
                   backgroundImage: (user.image != '')
