@@ -1,44 +1,32 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-Future<bool> signIn(String email, String password) async {
-  try {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
-    return true;
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
-      print("The password is too weak");
-    } else if (e.code == "email-already-in-use") {
-      print("The email has been taken");
-    }
-  } catch (e) {
-    print(e.toString());
-  }
-  return false;
-}
-
-Future<bool> register(String email, String password, String username) async {
-  try {
-    final currentUser = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password);
-    await currentUser.user.updateProfile(displayName: username);
-    FirebaseAuth.instance.currentUser.reload();
-    return true;
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
-      print("The password is too weak");
-    } else if (e.code == "email-already-in-use") {
-      print("The email has been taken");
-    }
-  } catch (e) {
-    print(e.toString());
-  }
-  return false;
-}
+const Map<String, LinearGradient> linearGradients = {
+  'red': LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Colors.red,
+        Color(0xFFE57373),
+      ]),
+  'blue': LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      Color(0xff1488cc),
+      Color(0xff2b32b2),
+    ],
+  ),
+  'purple': LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xfffbc2eb),
+        Color(0xffa18cd1),
+      ])
+};
 
 Widget changingIcon(bool valid) {
   if (valid) {
