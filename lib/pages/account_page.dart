@@ -44,7 +44,9 @@ class _AccountPageState extends State<AccountPage>
                   children: [
                     IconButton(
                       icon: Icon(Icons.notifications),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/notification");
+                      },
                     ),
                     IconButton(
                       icon: Icon(Icons.settings),
