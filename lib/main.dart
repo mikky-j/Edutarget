@@ -9,6 +9,7 @@ import 'package:new_edutarget/pages/course_page.dart';
 import 'package:new_edutarget/pages/forgot_password_page.dart';
 import 'package:new_edutarget/pages/home_page.dart';
 import 'package:new_edutarget/pages/lesson_page.dart';
+import 'package:new_edutarget/pages/notification_page.dart';
 import 'package:new_edutarget/pages/settings_page.dart';
 import 'package:new_edutarget/pages/signup_page.dart';
 import 'package:new_edutarget/pages/signin_page.dart';
@@ -121,6 +122,11 @@ class MainApp extends StatelessWidget {
       case '/complete-account':
         return CustomTransistion(
           builder: (_) => CompleteAccountPage(),
+          settings: settings,
+        );
+      case '/notification':
+        return CustomTransistion(
+          builder: (_) => NotificationPage(),
           settings: settings,
         );
     }
