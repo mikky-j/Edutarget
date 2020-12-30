@@ -10,10 +10,10 @@ Future<bool> signIn(String email, String password) async {
         .signInWithEmailAndPassword(email: email, password: password);
     return true;
   } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
+    if (e.code == 'wrong-password') {
       print("The password is too weak");
-    } else if (e.code == "email-already-in-use") {
-      print("The email has been taken");
+    } else if (e.code == "invalid-email") {
+      print("this is the wrong email");
     }
   } catch (e) {
     print(e.toString());
