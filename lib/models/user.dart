@@ -2,7 +2,7 @@ import 'package:new_edutarget/models/course.dart';
 import 'package:flutter/material.dart';
 
 class User with ChangeNotifier {
-  String _username = "";
+  String _username = "username";
   String _email = "";
   String _password = "";
   String _firstName = "";
