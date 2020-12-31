@@ -32,33 +32,36 @@ class _SplashScreeenState extends State<SplashScreeen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: widget.backgroundColor,
-      body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          width: double.infinity,
-          height: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  child: SizedBox(
-                    width: 150,
-                    height: 150,
-                    child: widget.child,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: widget.backgroundColor,
+        body: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            width: double.infinity,
+            height: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    child: SizedBox(
+                      width: 150,
+                      height: 150,
+                      child: widget.child,
+                    ),
                   ),
                 ),
-              ),
-              // const Padding(
-              //   padding: const EdgeInsets.only(bottom: 50.0),
-              //   child: CircularProgressIndicator(
-              //     backgroundColor: Colors.white,
-              //   ),
-              // ),
-            ],
+                // const Padding(
+                //   padding: const EdgeInsets.only(bottom: 50.0),
+                //   child: CircularProgressIndicator(
+                //     backgroundColor: Colors.white,
+                //   ),
+                // ),
+              ],
+            ),
           ),
         ),
       ),
