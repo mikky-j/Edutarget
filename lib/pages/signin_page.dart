@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:new_edutarget/constants/const.dart';
 import 'package:new_edutarget/models/user.dart';
+import 'package:new_edutarget/widgets/double_tap_to_exit.dart';
 import 'package:provider/provider.dart';
 
 class SignInPage extends StatefulWidget {
@@ -35,8 +36,7 @@ class _SignInPageState extends State<SignInPage> {
     TextTheme text = Theme.of(context).textTheme;
     _tapGestureRecognizer
       ..onTap = () => Navigator.pushReplacementNamed(context, '/signup');
-    return WillPopScope(
-      onWillPop: () async => false,
+    return DoubleTapToExit(
       child: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
