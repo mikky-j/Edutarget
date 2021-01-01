@@ -87,7 +87,8 @@ class CheckboxFormField extends FormField<bool> {
       FormFieldSetter<bool> onSaved,
       FormFieldValidator<bool> validator,
       bool initialValue = false,
-      AutovalidateMode autovalidateMode = AutovalidateMode.disabled})
+      AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
+      Color activeColor = Colors.deepPurple})
       : super(
             onSaved: onSaved,
             validator: validator,
@@ -100,6 +101,7 @@ class CheckboxFormField extends FormField<bool> {
                 title: title,
                 value: state.value,
                 onChanged: state.didChange,
+                activeColor: activeColor,
                 subtitle: state.hasError
                     ? Builder(
                         builder: (BuildContext context) => Text(
