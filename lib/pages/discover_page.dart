@@ -214,7 +214,7 @@ class CourseCard extends StatelessWidget {
   }
 }
 
-class HomeSearchBar extends StatefulWidget {
+class HomeSearchBar extends StatelessWidget {
   final bool autofocus;
   const HomeSearchBar({
     Key key,
@@ -222,69 +222,30 @@ class HomeSearchBar extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _HomeSearchBarState createState() => _HomeSearchBarState();
-}
-
-class _HomeSearchBarState extends State<HomeSearchBar> {
-  TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        color: Colors.blueGrey[100].withOpacity(0.3),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              controller: _controller,
-              autofocus: widget.autofocus,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "Search",
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/search');
+      },
+      child: Container(
+        height: 50,
+        margin: const EdgeInsets.symmetric(vertical: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          color: Colors.blueGrey[100].withOpacity(0.3),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                "Search",
+                style: Theme.of(context).inputDecorationTheme.hintStyle,
               ),
-              textInputAction: TextInputAction.search,
-              onTap: () {
-                FocusScope.of(context).unfocus();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => SearchPage(
-                      initialText: _controller.text ?? "l",
-                    ),
-                  ),
-                );
-              },
             ),
-          ),
-          IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => SearchPage(),
-                  ),
-                );
-              })
-        ],
+            Icon(Icons.search),
+          ],
+        ),
       ),
     );
   }
