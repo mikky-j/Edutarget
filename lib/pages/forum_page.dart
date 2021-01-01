@@ -11,14 +11,6 @@ class ForumPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Padding(
-            //   padding:
-            //       const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-            //   child: Text(
-            //     "Forum",
-            //     style: Theme.of(context).textTheme.headline4,
-            //   ),
-            // ),
             ForumSearchBar(),
             ForumTagBar(),
             columnPadding,
@@ -30,6 +22,9 @@ class ForumPage extends StatelessWidget {
             const ForumHeading(
               title: "Trending Posts",
             ),
+            QuestionCard(),
+            QuestionCard(),
+            QuestionCard(),
             QuestionCard(),
           ],
         ),
@@ -125,13 +120,29 @@ class ForumTopicCard extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width * 0.6,
         margin: const EdgeInsets.only(right: 20.0),
-        alignment: Alignment.bottomLeft,
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           gradient: linearGradients[gradient],
         ),
-        child: Text(title),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              "100 posts",
+              style: Theme.of(context).textTheme.caption.copyWith(
+                    color: Colors.white,
+                  ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -149,7 +160,7 @@ class ForumHeading extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: Theme.of(context).textTheme.headline5),
+          Text(title, style: Theme.of(context).textTheme.headline6),
           Divider(
             color: Colors.blueGrey,
           )
@@ -207,16 +218,92 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.black12,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+    return Container(
+      height: 175,
+      margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(12.0),
       ),
-      child: Container(
-        height: 100,
-        width: double.infinity,
-        child: Text("data"),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          QuestionCardHeader(),
+          Text(
+            "This is a dumb question from a noob programmer. I ask Dami all the questions because he is a literal god when it comes to programming. This is just some more text to test the overflow",
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.thumb_up_outlined),
+                  onPressed: () {},
+                ),
+                Text("12k"),
+                IconButton(
+                  icon: Icon(Icons.comment_outlined),
+                  onPressed: () {},
+                ),
+                Text("2.3k"),
+                IconButton(
+                  icon: Icon(Icons.remove_red_eye),
+                  onPressed: () {},
+                ),
+                Text("150k"),
+              ],
+            ),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class QuestionCardHeader extends StatelessWidget {
+  const QuestionCardHeader({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        CircleAvatar(
+          backgroundImage: AssetImage("assets/img/account.png"),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: SizedBox(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Some Random Question",
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                  ),
+                ),
+                Text(
+                  "Some Random User",
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              ],
+            ),
+            height: 70,
+          ),
+        ),
+        IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {})
+      ],
     );
   }
 }
