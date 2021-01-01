@@ -1,34 +1,16 @@
 import 'package:flutter/material.dart';
 
-class SearchPage extends StatefulWidget {
-  final String initialText;
+class SearchPage extends StatelessWidget {
   const SearchPage({
     Key key,
-    this.initialText,
   }) : super(key: key);
-
-  @override
-  _SearchPageState createState() => _SearchPageState();
-}
-
-class _SearchPageState extends State<SearchPage> {
-  TextEditingController _controller;
-  @override
-  void initState() {
-    _controller = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
@@ -49,7 +31,6 @@ class _SearchPageState extends State<SearchPage> {
                 children: [
                   Expanded(
                     child: TextFormField(
-                      controller: _controller,
                       autofocus: true,
                       decoration: InputDecoration(
                         border: InputBorder.none,
