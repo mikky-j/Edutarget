@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:new_edutarget/models/forum_post.dart';
 
 const Map<String, LinearGradient> linearGradients = {
   'red': LinearGradient(
@@ -27,6 +28,27 @@ const Map<String, LinearGradient> linearGradients = {
         Color(0xffa18cd1),
       ])
 };
+
+String formatNumber(int number) {
+  if (number >= 1000)
+    return "${(number / 1000).toStringAsFixed(1)}K";
+  else if (number >= 1000000)
+    return "${(number / 1000000).toStringAsFixed(1)}M";
+  else if (number >= 1000000000)
+    return "${(number / 1000000000).toStringAsFixed(1)}B";
+  return "$number";
+}
+
+ForumPost posts = ForumPost(
+  name: "Random Programming Question",
+  comments: 2500,
+  likes: 1555,
+  views: 5000,
+  userName: "Random User",
+  post:
+      "This is a dumb question from a noob programmer. I ask Dami all the questions because he is a literal god when it comes to programming.\n This is just some more text to test the overflow",
+  tags: ["Programming", "Flutter", "Noob"],
+);
 
 Widget changingIcon(bool valid) {
   if (valid) {
