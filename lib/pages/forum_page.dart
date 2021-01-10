@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_edutarget/constants/const.dart';
+import 'package:new_edutarget/pages/question_page.dart';
 
 class ForumPage extends StatelessWidget {
   const ForumPage({Key key}) : super(key: key);
@@ -218,46 +219,72 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 175,
-      margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(12.0),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        customTransition(
+          QuestionPage(),
+        ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          QuestionCardHeader(),
-          Text(
-            "This is a dumb question from a noob programmer. I ask Dami all the questions because he is a literal god when it comes to programming. This is just some more text to test the overflow",
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.thumb_up_outlined),
-                  onPressed: () {},
-                ),
-                Text("12k"),
-                IconButton(
-                  icon: Icon(Icons.comment_outlined),
-                  onPressed: () {},
-                ),
-                Text("2.3k"),
-                IconButton(
-                  icon: Icon(Icons.remove_red_eye),
-                  onPressed: () {},
-                ),
-                Text("150k"),
-              ],
+      child: Container(
+        height: 175,
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            QuestionCardHeader(),
+            Text(
+              posts.post,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
-          ),
-        ],
+            Expanded(
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.thumb_up_outlined),
+                    onPressed: () {},
+                    color: Colors.blueGrey[100],
+                  ),
+                  Text(
+                    '${formatNumber(posts.likes)}',
+                    style: TextStyle(
+                      color: Colors.blueGrey[100],
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.comment_outlined),
+                    onPressed: () {},
+                    color: Colors.blueGrey[100],
+                  ),
+                  Text(
+                    '${formatNumber(posts.comments)}',
+                    style: TextStyle(
+                      color: Colors.blueGrey[100],
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.remove_red_eye),
+                    onPressed: () {},
+                    color: Colors.blueGrey[100],
+                  ),
+                  Text(
+                    '${formatNumber(posts.views)}',
+                    style: TextStyle(
+                      color: Colors.blueGrey[100],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -285,7 +312,7 @@ class QuestionCardHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Some Random Question",
+                  posts.name,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: TextStyle(
@@ -294,7 +321,7 @@ class QuestionCardHeader extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Some Random User",
+                  posts.userName,
                   style: Theme.of(context).textTheme.caption,
                 ),
               ],
