@@ -114,39 +114,41 @@ class _TagBarState extends State<TagBar> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return TabBar(
-      controller: _controller,
-      // indicator: BoxDecoration(
-      //   color: Colors.black54,
-      //   borderRadius: BorderRadius.circular(20),
-      // ),
-      // indicatorWeight: 0.001,
-      isScrollable: true,
-      indicatorColor: Theme.of(context).primaryColor,
-      // // unselectedLabelColor: Colors.blueGrey,
-      // labelColor: Colors.white,
-      tabs: [
-        Tab(
-          // child: Text("hello"),
-          text: "Popular",
-        ),
-        Tab(
-          // child: Text("hello"),
-          text: "Programming",
-        ),
-        Tab(
-          // child: Text("hello"),
-          text: "Flutter",
-        ),
-        Tab(
-          // child: Text("hello"),
-          text: "C-Objective",
-        ),
-        Tab(
-          // child: Text("hello"),
-          text: "JavaScript",
-        ),
-      ],
+    return Center(
+      child: TabBar(
+        controller: _controller,
+        // indicator: BoxDecoration(
+        //   color: Colors.black54,
+        //   borderRadius: BorderRadius.circular(20),
+        // ),
+        // indicatorWeight: 0.001,
+        isScrollable: true,
+        indicatorColor: Theme.of(context).primaryColor,
+        // // unselectedLabelColor: Colors.blueGrey,
+        // labelColor: Colors.white,
+        tabs: [
+          Tab(
+            // child: Text("hello"),
+            text: "Popular",
+          ),
+          Tab(
+            // child: Text("hello"),
+            text: "Programming",
+          ),
+          Tab(
+            // child: Text("hello"),
+            text: "Flutter",
+          ),
+          Tab(
+            // child: Text("hello"),
+            text: "C-Objective",
+          ),
+          Tab(
+            // child: Text("hello"),
+            text: "JavaScript",
+          ),
+        ],
+      ),
     );
   }
 }
@@ -160,7 +162,6 @@ class CourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final courseWidth = (MediaQuery.of(context).size.width * 0.5) - 40;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -176,7 +177,7 @@ class CourseCard extends StatelessWidget {
             tag: course.name,
             child: Container(
               height: 250,
-              width: courseWidth,
+              width: 165,
               decoration: BoxDecoration(
                 color: colors[course.color],
                 borderRadius: BorderRadius.circular(30.0),
@@ -187,7 +188,7 @@ class CourseCard extends StatelessWidget {
           ),
           Container(
             height: 250,
-            width: courseWidth,
+            width: 165,
             margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             padding: EdgeInsets.all(20.0),
             alignment: Alignment.center,
