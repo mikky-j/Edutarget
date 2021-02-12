@@ -3,7 +3,7 @@ class ForumPost {
   final int likes, comments, views;
   final List<String> tags;
 
-  ForumPost({
+  const ForumPost({
     this.name,
     this.userName,
     this.post,

@@ -39,7 +39,7 @@ String formatNumber(int number) {
   return "$number";
 }
 
-ForumPost posts = ForumPost(
+const ForumPost posts = ForumPost(
   name: "Random Programming Question",
   comments: 2500,
   likes: 1555,

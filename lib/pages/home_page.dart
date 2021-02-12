@@ -3,6 +3,7 @@ import 'package:new_edutarget/pages/account_page.dart';
 import 'package:new_edutarget/pages/discover_page.dart';
 import 'package:new_edutarget/pages/forum_page.dart';
 import 'package:new_edutarget/widgets/double_tap_to_exit.dart';
+import 'all_courses_page.dart';
 
 class Home extends StatefulWidget {
   Home({
@@ -35,9 +36,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           child: TabBarView(
             children: [
               DiscoverPage(controller: _tabcontroller),
-              Container(
-                color: Colors.blue,
-              ),
+              AllCoursesPage(),
               ForumPage(),
               AccountPage(),
             ],

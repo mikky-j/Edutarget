@@ -87,7 +87,7 @@ class CoursePage extends StatelessWidget {
                             Icon(Icons.arrow_back, color: colors[args.color]),
                       ),
                     ),
-                    CoursePopUpMenu(args: args)
+                    CoursePopUpMenu(color: args.color)
                   ],
                 ),
                 Text(
@@ -105,21 +105,13 @@ class CoursePage extends StatelessWidget {
                 ),
                 Container(
                   height: 250,
-                  child: Stack(
-                    children: [
-                      Hero(
-                        tag: args.name,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
-                              color: colors[args.color]),
-                        ),
-                      ),
-                      SvgPicture.asset(
-                        args.imageName,
-                      ),
-                    ],
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: colors[args.color],
+                  ),
+                  child: SvgPicture.asset(
+                    args.imageName,
                   ),
                 ),
                 SizedBox(
@@ -167,10 +159,10 @@ class CoursePage extends StatelessWidget {
 class CoursePopUpMenu extends StatelessWidget {
   const CoursePopUpMenu({
     Key key,
-    @required this.args,
+    @required this.color,
   }) : super(key: key);
 
-  final Course args;
+  final String color;
 
   @override
   Widget build(BuildContext context) {
@@ -178,10 +170,11 @@ class CoursePopUpMenu extends StatelessWidget {
       onSelected: (value) {
         switch (value) {
           case 'Reset Progress':
-            print("Hello");
+            break;
+          case 'Settings':
+            Navigator.pushNamed(context, "/settings");
             break;
           default:
-            print("hey");
         }
       },
       itemBuilder: (context) {
@@ -201,7 +194,7 @@ class CoursePopUpMenu extends StatelessWidget {
         child: Center(
           child: Icon(
             Icons.more_vert,
-            color: colors[args.color],
+            color: colors[color],
           ),
         ),
       ),

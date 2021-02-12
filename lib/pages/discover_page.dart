@@ -171,45 +171,32 @@ class CourseCard extends StatelessWidget {
           arguments: course,
         );
       },
-      child: Stack(
-        children: [
-          Hero(
-            tag: course.name,
-            child: Container(
-              height: 250,
-              width: 165,
-              decoration: BoxDecoration(
-                color: colors[course.color],
-                borderRadius: BorderRadius.circular(30.0),
+      child: Container(
+        height: 250,
+        width: 165,
+        decoration: BoxDecoration(
+          color: colors[course.color],
+          borderRadius: BorderRadius.circular(20),
+        ),
+        margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        padding: EdgeInsets.all(20.0),
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            Text(
+              course.name,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white,
               ),
-              margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-              padding: EdgeInsets.all(20.0),
             ),
-          ),
-          Container(
-            height: 250,
-            width: 165,
-            margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-            padding: EdgeInsets.all(20.0),
-            alignment: Alignment.center,
-            child: Column(
-              children: [
-                Text(
-                  course.name,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-                Spacer(),
-                SvgPicture.asset(
-                  course.imageName,
-                  height: 150,
-                )
-              ],
-            ),
-          ),
-        ],
+            Spacer(),
+            SvgPicture.asset(
+              course.imageName,
+              height: 150,
+            )
+          ],
+        ),
       ),
     );
   }

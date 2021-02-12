@@ -12,7 +12,7 @@ class Course {
     "authorName",
   ];
 
-  Course({
+  const Course({
     this.id,
     @required this.name,
     @required this.imageName,
