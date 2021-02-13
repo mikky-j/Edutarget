@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:new_edutarget/constants/const.dart';
+import 'package:new_edutarget/main.dart';
 import 'package:new_edutarget/pages/question_page.dart';
+import 'package:new_edutarget/pages/saved_posts.dart';
 
 class ForumPage extends StatelessWidget {
   const ForumPage({Key key}) : super(key: key);
@@ -12,7 +14,8 @@ class ForumPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ForumSearchBar(),
+            // ForumPageTItle(text: "C++"),
+            ForumPageHeader(),
             ForumTagBar(),
             columnPadding,
             const ForumHeading(
@@ -32,11 +35,61 @@ class ForumPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).accentColor,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/add-forum-post');
+        },
         child: Icon(
           Icons.add,
           color: Colors.white,
         ),
+      ),
+    );
+  }
+}
+
+class ForumPageTItle extends StatelessWidget {
+  final String text;
+  const ForumPageTItle({
+    Key key,
+    this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 24.0),
+      ),
+    );
+  }
+}
+
+class ForumPageHeader extends StatelessWidget {
+  const ForumPageHeader({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 50,
+      margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: ForumSearchBar(),
+          ),
+          const SizedBox(width: 10),
+          IconButton(
+            icon: Icon(Icons.bookmark),
+            onPressed: () {
+              Navigator.push(context, customTransition(SavedForumPosts()));
+            },
+          ),
+        ],
       ),
     );
   }
@@ -86,10 +139,7 @@ class ForumSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black12,
-      width: double.infinity,
-      height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       child: Row(
         children: [
           Expanded(

@@ -89,18 +89,9 @@ class ForumTagBar extends StatelessWidget {
       child: Row(
         children: posts.tags
             .map(
-              (e) => Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                margin: const EdgeInsets.only(right: 8.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    e,
-                    style: TextStyle(),
-                  ),
-                ),
+              (e) => Chip(
+                label: Text(e),
+                deleteIcon: Icon(Icons.delete),
               ),
             )
             .toList(),

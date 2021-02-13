@@ -4,6 +4,7 @@ import 'package:new_edutarget/models/shared_prefrences_helper.dart';
 import 'package:new_edutarget/models/theme_notifier.dart';
 import 'package:new_edutarget/models/user.dart';
 import 'package:new_edutarget/pages/account_page.dart';
+import 'package:new_edutarget/pages/add_question_page.dart';
 import 'package:new_edutarget/pages/complete_account_page.dart';
 import 'package:new_edutarget/pages/course_page.dart';
 import 'package:new_edutarget/pages/forgot_password_page.dart';
@@ -118,6 +119,11 @@ class MainApp extends StatelessWidget {
       case '/account':
         return CustomTransistion(
           builder: (_) => AccountPage(),
+          settings: settings,
+        );
+      case '/add-forum-post':
+        return CustomTransistion(
+          builder: (_) => AddQuestionPage(),
           settings: settings,
         );
       case '/complete-account':
